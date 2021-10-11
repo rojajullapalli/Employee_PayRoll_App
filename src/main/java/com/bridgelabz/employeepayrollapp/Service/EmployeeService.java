@@ -3,9 +3,16 @@ package com.bridgelabz.employeepayrollapp.Service;
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDto;
 import com.bridgelabz.employeepayrollapp.model.Employee;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class implements all the methods of business logic from interface
+ * @author roja julapalli
+ * @version 0.0.1
+ * @since 10-10-2021
+ */
 @Service
 public class EmployeeService implements IEmployeePayrollService {
     private List<Employee> employeeList = new ArrayList<>();
