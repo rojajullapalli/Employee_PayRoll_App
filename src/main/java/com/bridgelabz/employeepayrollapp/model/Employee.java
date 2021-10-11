@@ -2,6 +2,8 @@ package com.bridgelabz.employeepayrollapp.model;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDto;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 /**
@@ -13,6 +15,7 @@ import javax.persistence.Id;
  */
 @Data
 @Entity
+@NoArgsConstructor
 public class Employee {
     @Id
     private int empId;
@@ -25,7 +28,5 @@ public class Employee {
         this.salary = employeePayrollDto.getSalary();
     }
 
-    public Employee() {
 
-    }
 }
