@@ -31,7 +31,7 @@ public class EmployeePayrollDto {
     public long salary;
 
     @NotNull
-    @Pattern(regexp = "male|female", message="gender should be either male or female")
+    @Pattern(regexp = "male|female", message = "gender should be either male or female")
     public String gender;
 
     @NotNull
