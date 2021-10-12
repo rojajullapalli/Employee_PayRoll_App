@@ -1,8 +1,7 @@
 package com.bridgelabz.employeepayrollapp.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import javax.management.ConstructorParameters;
 
 /**
  * creates and maintains response data as object (DTO)
@@ -12,12 +11,8 @@ import javax.management.ConstructorParameters;
  * @since 10-10-2021
  */
 @Data
+@AllArgsConstructor
 public class ResponseDto {
     private String message;
     private Object data;
-
-    public ResponseDto(String message, Object data) {
-        this.message = message;
-        this.data = data;
-    }
 }

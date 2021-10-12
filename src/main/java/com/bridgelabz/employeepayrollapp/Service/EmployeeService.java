@@ -2,7 +2,6 @@ package com.bridgelabz.employeepayrollapp.Service;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDto;
 import com.bridgelabz.employeepayrollapp.exception.CustomException;
-import com.bridgelabz.employeepayrollapp.exception.EmployeePayrollException;
 import com.bridgelabz.employeepayrollapp.model.Employee;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,7 @@ public class EmployeeService implements IEmployeePayrollService {
     }
 
     public Employee getEmployeePayRollById(int empId) {
-        return employeeList.stream().filter(id->id.getEmpId() == empId).findFirst().orElseThrow(()->new CustomException("Employee id not found"));
+        return employeeList.stream().filter(id -> id.getEmpId() == empId).findFirst().orElseThrow(() -> new CustomException("Employee id not found"));
     }
 
     public Employee addEmployee(EmployeePayrollDto employeePayrollDto) {
@@ -44,7 +43,7 @@ public class EmployeeService implements IEmployeePayrollService {
     }
 
     public void deleteEmployeePayroll(int empId) {
-        employeeList.stream().filter(id->id.getEmpId() == empId).findFirst().orElseThrow(()->new CustomException("Employee id not found"));
-        employeeList.remove(empId-1);
+        employeeList.stream().filter(id -> id.getEmpId() == empId).findFirst().orElseThrow(() -> new CustomException("Employee id not found"));
+        employeeList.remove(empId - 1);
     }
 }
