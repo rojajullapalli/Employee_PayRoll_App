@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "Employee")
-public class Employee {
+public class EmployeePayRollData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "emp_Id")
@@ -35,11 +35,11 @@ public class Employee {
     @Column(name = "department")
     private List<String> departments;
 
-    public Employee(EmployeePayrollDto employeePayrollDto) {
+    public EmployeePayRollData(EmployeePayrollDto employeePayrollDto) {
         this.updateEmployeePayrollData(employeePayrollDto);
     }
 
-    public Employee() {
+    public EmployeePayRollData() {
     }
 
     public void updateEmployeePayrollData(EmployeePayrollDto employeePayrollDto) {

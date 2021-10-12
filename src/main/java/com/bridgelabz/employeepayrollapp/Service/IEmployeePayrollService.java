@@ -1,7 +1,7 @@
 package com.bridgelabz.employeepayrollapp.Service;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDto;
-import com.bridgelabz.employeepayrollapp.model.Employee;
+import com.bridgelabz.employeepayrollapp.model.EmployeePayRollData;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public interface IEmployeePayrollService {
      *
      * @return list of Employees
      */
-    List<Employee> getEmployeePayrollData();
+    List<EmployeePayRollData> getEmployeePayrollData();
 
     /**
      * method to get employee by unique identifier
@@ -27,7 +27,7 @@ public interface IEmployeePayrollService {
      * @return employee by unique identifier
      */
 
-    Employee getEmployeePayRollById(int empId);
+    EmployeePayRollData getEmployeePayRollById(int empId);
 
     /**
      * method to add employee payroll data
@@ -36,7 +36,7 @@ public interface IEmployeePayrollService {
      * @return employee payroll data will get added
      */
 
-    Employee addEmployee(EmployeePayrollDto employeePayrollDto);
+    EmployeePayRollData addEmployee(EmployeePayrollDto employeePayrollDto);
 
     /**
      * method to update already existing data
@@ -46,7 +46,7 @@ public interface IEmployeePayrollService {
      * @return employee payroll data will get updated based upon unique identifier
      */
 
-    Employee UpdateEmployeePayroll(int empId, EmployeePayrollDto employeePayrollDto);
+    EmployeePayRollData UpdateEmployeePayroll(int empId, EmployeePayrollDto employeePayrollDto);
 
     /**
      * method to delete employee payroll data by id

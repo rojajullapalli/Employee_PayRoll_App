@@ -22,7 +22,7 @@ import java.util.List;
 public class EmployeePayrollDto {
 
     @NotNull
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z]{2,}$", message = "name should contains atleast 2 characters\nfirst letter should be caps")
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z]{2,}$", message = "name should contains atleast 2 characters...first letter should be caps")
     public String name;
 
     @NotNull

@@ -2,7 +2,7 @@ package com.bridgelabz.employeepayrollapp.Service;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDto;
 import com.bridgelabz.employeepayrollapp.exception.CustomException;
-import com.bridgelabz.employeepayrollapp.model.Employee;
+import com.bridgelabz.employeepayrollapp.model.EmployeePayRollData;
 import com.bridgelabz.employeepayrollapp.repository.EmployeePayrollRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,36 +21,34 @@ import java.util.List;
 @Service
 @Slf4j
 public class EmployeeService implements IEmployeePayrollService {
-    private final List<Employee> employeeList = new ArrayList<>();
+    private final List<EmployeePayRollData> employeePayRollDataList = new ArrayList<>();
     @Autowired
     private EmployeePayrollRepository employeePayrollRepository;
 
-    public List<Employee> getEmployeePayrollData() {
-        return employeeList;
+    public List<EmployeePayRollData> getEmployeePayrollData() {
+        return employeePayrollRepository.findAll();
     }
 
-    public Employee getEmployeePayRollById(int empId) {
-        return employeeList.stream().filter(id -> id.getEmpId() == empId).findFirst().orElseThrow(() -> new CustomException("Employee id not found"));
+    public EmployeePayRollData getEmployeePayRollById(int empId) {
+        return employeePayrollRepository.findById(empId).orElseThrow(()-> new CustomException("Employee with employeeId "+empId+" does not exists...!"));
     }
 
-    public Employee addEmployee(EmployeePayrollDto employeePayrollDto) {
-        Employee employee = null;
-        employee = new Employee(employeePayrollDto);
-        log.debug("Emp Data" + employee);
-        employeeList.add(employee);
-        return employeePayrollRepository.save(employee);
+    public EmployeePayRollData addEmployee(EmployeePayrollDto employeePayrollDto) {
+        EmployeePayRollData employeePayRollData = null;
+        employeePayRollData = new EmployeePayRollData(employeePayrollDto);
+        log.debug("Emp Data" + employeePayRollData);
+        employeePayRollDataList.add(employeePayRollData);
+        return employeePayrollRepository.save(employeePayRollData);
     }
 
-    public Employee UpdateEmployeePayroll(int empId, EmployeePayrollDto employeePayrollDto) {
-        Employee employee = this.getEmployeePayRollById(empId);
-        employee.setName(employeePayrollDto.getName());
-        employee.setSalary(employeePayrollDto.getSalary());
-        employeeList.set(empId - 1, employee);
-        return employee;
+    public EmployeePayRollData UpdateEmployeePayroll(int empId, EmployeePayrollDto employeePayrollDto) {
+        EmployeePayRollData employeePayRollData = this.getEmployeePayRollById(empId);
+        employeePayRollData.updateEmployeePayrollData(employeePayrollDto);
+        return employeePayrollRepository.save(employeePayRollData);
     }
 
     public void deleteEmployeePayroll(int empId) {
-        employeeList.stream().filter(id -> id.getEmpId() == empId).findFirst().orElseThrow(() -> new CustomException("Employee id not found"));
-        employeeList.remove(empId - 1);
+        EmployeePayRollData employeePayRollData = this.getEmployeePayRollById(empId);
+        employeePayrollRepository.delete(employeePayRollData);
     }
 }
