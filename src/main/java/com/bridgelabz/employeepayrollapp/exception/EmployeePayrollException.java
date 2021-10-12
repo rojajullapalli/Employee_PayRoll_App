@@ -22,4 +22,9 @@ public class EmployeePayrollException {
         ResponseDto responseDto = new ResponseDto("Validation Failed", details);
         return new ResponseEntity(responseDto, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<ResponseDto> handleEmployeeException(CustomException cx){
+        ResponseDto responseDto = new ResponseDto("id not found",cx.getMessage());
+        return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
+    }
 }
